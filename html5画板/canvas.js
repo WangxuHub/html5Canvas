@@ -109,7 +109,7 @@
         else if (drawType == 'straight-line') { //直线
             
         }
-
+        return false;
     }).mouseup(function (e) {
         $(this).removeAttr('draw-type');
     });
@@ -179,6 +179,7 @@
             'endX': endX,
             'endY': endY
         });
+        return false;
     }).mouseup(function (e) {
         var startX = $canvas.attr('startX');
         var startY = $canvas.attr('startY');
@@ -227,7 +228,8 @@
         else if (drawType == 'fill-circle')//实体圆
         {
             context.beginPath();
-            context.fillStyle = "red";  //填充的颜色
+           /// context.fillStyle = "red";  //填充的颜色
+            context.fillStyle = "rgba(153,153,153,0.5)";  //填充的颜色
             context.strokeStyle = "red";  //边框颜色
             context.linewidth = 3;  //边框宽
 
@@ -311,7 +313,6 @@
         }
         can_context.closePath();
         can_context.stroke();
-        can_context.fill();
     }
 
     window.a = function () {
