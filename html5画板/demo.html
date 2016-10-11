@@ -8,10 +8,12 @@
     <style>
         #canvasContainer {
             display:block;
-            width:1000px;
-            height:2000px;
+            width:1200px;
+            height:1100px;
             border:1px solid #ccc;
             margin:auto;
+            position:relative;
+            overflow:auto;
         }
 
         #toolContainer {
@@ -19,10 +21,11 @@
             box-shadow:2px 2px 2px black;
             width:100px;
             height:230px;
-            position:fixed;
+            position:absolute;
             top:100px;
-            left:100px;
+            right:40px;
             background-color:white;
+            z-index:100;
         }
         #toolContainer .tool-item {
             border:1px solid #ccc;
@@ -32,22 +35,46 @@
             display:inline-block;
             font-size:12px;
         }
+        #toolContainer .tool-item:hover{
+            background-color:#ccc;
+            cursor:pointer;
+        }
+            #toolContainer .tool-item.checked {
+                background-color:yellow;
+
+            }
     </style>
     <script src="canvas.js" defer="defer"></script>
 </head>
 <body>
     <!--http://www.html5tricks.com/html5-canvas-draw.html-->
-    <canvas id="canvasContainer" width="1000" height="2000"></canvas>
-
-    <div id="toolContainer">
-        <div class="tool-item line">线</div>
-        <div class="tool-item straight-line">直线</div>
-        <div class="tool-item hollow-frame">空心框</div>
-        <div class="tool-item entity-frame">实体框</div>
-        <div class="tool-item hollow-circle">空心圆</div>
-        <div class="tool-item entity-circle">实体圆</div>
-        <div class="tool-item"></div>
-        <div class="tool-item"></div>
+    <div id="testDiv" style="position:fixed;top:10px;left:10px;">
+        <button id="btnSaveImage">保存图片</button>
+        <button id="btnSaveImageTolocal">保存图片到本地</button>
+        <button id="btnSaveMark">保存标注</button>
+        <button id="btnCanvasClear">清空画布</button>
+        <button id="btnLoadMark">加载标注</button>
+        <br />
+        <textarea id="tempArea"  style="display:none; width:500px;height:1000px;"></textarea>
+    </div>
+    <div id="canvasContainer">
+        <div id="canvasContent" style="height:100%;overflow:auto;position:relative;">
+            <div id="documentView" style="height:2000px;">
+                <img src="图片1.png" style="width:100%;height:100%;"/>
+            </div>
+            <canvas id="canvas"  style="position:absolute;top:0;z-index:5;"></canvas>
+            <canvas id="canvasTemp"  style="display:none;position:absolute;top:0;z-index:15;"></canvas>
+        </div>
+        <div id="toolContainer">
+            <div class="tool-item " draw-type="line">线</div>
+            <div class="tool-item " draw-type="straight-line">直线</div>
+            <div class="tool-item " draw-type="stroke-frame">空心框</div>
+            <div class="tool-item " draw-type="fill-frame">实体框</div>
+            <div class="tool-item " draw-type="stroke-circle">空心圆</div>
+            <div class="tool-item " draw-type="fill-circle">实体圆</div>
+            <div class="tool-item" draw-type=""></div>
+            <div class="tool-item" draw-type=""></div>
+        </div>
     </div>
 </body>
 </html>
