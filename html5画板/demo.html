@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="Scripts/jquery-3.1.1.js"></script>
+
+    <style>
+        #canvasContainer {
+            display:block;
+            width:1000px;
+            height:2000px;
+            border:1px solid #ccc;
+            margin:auto;
+        }
+
+        #toolContainer {
+            border:1px solid #ccc;
+            box-shadow:2px 2px 2px black;
+            width:100px;
+            height:230px;
+            position:fixed;
+            top:100px;
+            left:100px;
+            background-color:white;
+        }
+        #toolContainer .tool-item {
+            border:1px solid #ccc;
+            margin:5px;
+            width:30px;
+            height:30px;
+            display:inline-block;
+            font-size:12px;
+        }
+    </style>
+    <script src="canvas.js" defer="defer"></script>
+</head>
+<body>
+    <!--http://www.html5tricks.com/html5-canvas-draw.html-->
+    <canvas id="canvasContainer" width="1000" height="2000"></canvas>
+
+    <div id="toolContainer">
+        <div class="tool-item line">线</div>
+        <div class="tool-item straight-line">直线</div>
+        <div class="tool-item hollow-frame">空心框</div>
+        <div class="tool-item entity-frame">实体框</div>
+        <div class="tool-item hollow-circle">空心圆</div>
+        <div class="tool-item entity-circle">实体圆</div>
+        <div class="tool-item"></div>
+        <div class="tool-item"></div>
+    </div>
+</body>
+</html>
